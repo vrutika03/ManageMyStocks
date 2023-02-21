@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="UTF-8">
+    <title>Welcome to Stock MMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+
+<div th:insert="nav_user :: navbar"></div>
+
+
+
+<div class="content div-center m-3 p-2">
+    <div class="m-2 p-3 container">
+        <div class="row p-3">
+            <div class="col card rounded bg-dark text-white">
+                <div class="display-5">Portfolio</div>
+                <hr>
+                <div class="scrollable">
+                    <table class="table text-center text-white">
+                        <thead>
+                        <tr>
+                            <td style="color: white;">Stock Name</td>
+                            <td style="color: white;">Stock Price</td>
+                            <td style="color: white;">Stock Quantity</td>
+
+                        </tr>
+                        </thead>
+                        <tr class="m-2 p-2 bg-dark text-white"  th:each="stock: ${user_portfolio}">
+                            <td class="col m-2 bg-dark text-white" th:text="${stock.stockName}"></td>
+                            <td class="col m-2 bg-dark text-white" th:text="${stock.stockPrice}"></td>
+                            <td class="col m-2 badge bg-success text-white" th:text="${stock.stockQuantity}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col card rounded bg-dark text-white">
+                <div class="display-6">Watchlist</div>
+                <hr>
+                <div class="scrollable">
+                    <table class="table text-center">
+                        <thead>
+                        <tr>
+                            <td style="color: white;">Stock Name</td>
+                            <td style="color: white;">Stock Price</td>
+                        </tr>
+                        </thead>
+                        <tr class="m-2 p-2 bg-dark text-white"  th:each="watchlist: ${user_watchlist}">
+                            <td class="col m-2 bg-dark text-white" th:text="${watchlist.stockName}"></td>
+                            <td class="col m-2 bg-dark text-white" th:text="${watchlist.stockPrice}"></td>
+                            <td class="col m-2 bg-dark text-white">
+                                <a th:href="@{'/user/removeWatchlist'(stockID=${watchlist.stockId})}" class="m-2 btn btn-danger">Remove</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="m-2 p-2">
+                    <a th:href="@{'/user/createWatchlist'}" class="btn btn-primary">Add to Watchlist</a>
+                </div>
+            </div>
+        </div>
+        <div class="container row p-2 bg-dark">
+            <div class="col card rounded bg-dark text-light">
+                <div class="card-body">
+                    <p class="card-title display-6">Available Funds</p>
+                    <p class="card-text" th:text="${amount}+' CAD'"/>
+                    <a th:href="@{'/user/createFunds'}" class="btn btn-primary">Add Funds</a>
+                    <!--<a th:href="@{'/user/withdrawFunds'}" class="btn btn-primary">Withdraw Funds</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="container row p-2 bg-dark">
+            <div class="col card rounded bg-dark text-light">
+                <div class="card-body">
+                    <p class="card-title display-6">Available Margin</p>
+                    <p class="card-text" th:text="${userAvlbMargin}+' CAD'"/>
+                   <!-- <a th:href="@{'/user/createFunds'}" class="btn btn-primary">Add Funds</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

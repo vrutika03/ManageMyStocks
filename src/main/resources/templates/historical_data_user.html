@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>MMS Historical Data </title>
+  <script
+          src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script type="text/javascript"
+          src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body class="bg-dark">
+<div th:insert="nav_user :: navbar"></div>
+<form th:action="@{'/user/performance'}" method="post">
+  <table align="center" >
+    <tr style="color: #fff;"><td >Select Specific Stock :</td>
+      <td><select name="stock_name">
+        <option th:each="stock : ${stocks}" th:text="${stock}"></option>
+      </select></tr>
+    <tr><td><button class="m-2 btn btn-primary" type="submit">Get Data</button></td></tr>
+  </table>
+</form>
+<div class="container card p-3 m-2">
+  <div id="chart_div"></div>
+</div>
+<script th:inline="javascript">
+  var real_data = [[${chartData}]];
+  $(document).ready(function() {
+    google.charts.load('current', {
+      packages : [ 'corechart', 'line' ]
+    });
+    google.charts.setOnLoadCallback(drawColumnChart);
+  });
+  function drawColumnChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Date');
+    data.addColumn('number', 'Stock Price');
+    Object.keys(real_data).forEach(function(key) {
+      data.addRow([ key, real_data[key] ]);
+    });
+    var stock_name = [[${stockName}]];
+    var options = {
+      title : 'Stock price for ' + stock_name,
+      hAxis : {
+        title : 'Date',
+      },
+      vAxis : {
+        title : 'Price'
+      },
+        backgroundColor: '#fcfcfc'
+    };
+    var chart = new google.visualization.LineChart(document
+            .getElementById('chart_div'));
+    chart.draw(data, google.charts.Line.convertOptions(options));
+  }
+</script>
+</body>
+</html>

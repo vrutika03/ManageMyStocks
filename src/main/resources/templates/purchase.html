@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="UTF-8">
+    <title>Welcome to Stock MMS</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class = "bg-dark">
+<div th:insert="nav_user :: navbar"></div>
+<div class="content div-center m-3 p-2 bg-dark text-white">
+    <div class="row p-3">
+        <div class="col">
+            <div class="card rounded p-3 bg-dark text-white">
+                <div class="display-5">Purchase Stock</div>
+                <div style="font-size: 20px;color: red;" align="center" th:if="${errorMessage}">
+                    <div th:text="${errorMessage}"></div>
+                </div>
+                <hr>
+                <form th:action="@{'/user/purchase'}" method="post" modelAttribute="PurchaseStock">
+                    <div class="form-group p-2">
+                        <label class="bg-dark text-white" type="text" for="stock_name">Stock Name</label>
+
+                        <select name="stockId" id="stock_name" class="form-control">
+                            <option th:each="stock: ${list_of_stocks}" th:value="${stock.stock_id}" th:text="${stock.stock_name+'  '+stock.stock_price}">
+
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group p-2">
+                        <input class="form-control bg-dark text-white" type="number" min="0" name="stockQuantity" placeholder="Stock Quantity" required>
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input class="btn btn-success" type="submit" value="Purchase">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>

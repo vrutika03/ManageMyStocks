@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body style="background-image:url('https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHN0b2NrJTIwbWFya2V0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60');background-repeat:no-repeat;background-size:cover;margin: 0px;padding: 0px;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MMS: Manage My Stock - User Login </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/home'}">Administrator</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid h-custom p-5">
+    <div class="row d-flex justify-content-center align-items-center h-100 p-5">
+        <div class="col col-md-8 col-lg-6 col-xl-4 offset-xl-1 text-light card bg-dark">
+            <form class="form-signin" method="post" th:action="@{/user/Login}">
+                <h2 class="form-signin-heading text-light text-lg-left">Sign In</h2>
+                <div class="form-outline mb-4">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+                    <label class="form-label" for="username">Username</label>
+                </div>
+                <div class="form-outline mb-3">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+                    <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                                                                                      class="link-danger">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body></html>

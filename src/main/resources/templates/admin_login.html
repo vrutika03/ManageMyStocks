@@ -1,0 +1,43 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>MMS: Manage My Stock</title>
+    <!-- Include the Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<!-- Create the navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MMS: Manage My Stock - Admin Login</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/home'}">Administrator</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container m-3 p-2 ">
+    <h1 class="text-light">Login</h1>
+    <form method="post" th:action="@{/admin/Login}" >
+        <div class="form-group p-2">
+            <label class="text-light">Username:</label>
+            <input type="text" class="form-control" name="username" required>
+        </div>
+        <div class="form-group p-2">
+            <label class="text-light">Password:</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+        <div class="form-group p-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

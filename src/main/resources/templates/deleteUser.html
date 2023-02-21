@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <meta charset="UTF-8">
+  <title>Delete User</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="login.css">
+ </head>
+<body class = "bg-dark">
+<div th:insert="nav_admin :: navbar"></div>
+<form th:action="@{/admin/deleteUser}" method="post">
+  <table align="center">
+    <tr><td>Select Specific User :</td>
+      <td><select name="users">
+        <option th:each="user : ${usersList}" th:text="${user}"></option>
+      </select></tr>
+    <tr><td><button type="submit">Delete User</button></td><td></td></tr>
+  </table>
+</form>
+</form>
+</body>
+</html>

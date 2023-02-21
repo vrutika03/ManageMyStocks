@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MMS: Manage My Stock</title>
+    <!-- Include the Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="http://fonts.cdnfonts.com/css/agustina" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-dark">
+<!-- Create the navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MMS: Manage My Stock - Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/home'}">Administrator</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/user/home'}">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/register'}">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="p-3 container">
+    <div class="container text-center text-light text-warning m-4 p-4">
+        <h1 class="display-1 font-weight-bold">
+            <b>Manage My Stock</b>
+        </h1>
+        <div class="m-2 lead typist">
+            This website allows you to manage your stock levels and prices, and perform other tasks such as updating user information.
+        </div>
+        <a class="m-2 btn btn-outline-light btn-lg" href="">
+            Use the navigation bar above to access the different pages of the website.
+        </a>
+    </div>
+</div>
+</body>
+</html>
+

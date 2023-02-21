@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="UTF-8">
+    <title>Welcome to Stock MMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class = "bg-dark">
+<div th:insert="nav_admin :: navbar"></div>
+<div class="content div-center m-3 p-2 bg-dark text-white">
+    <div class="row p-3">
+        <div class="col">
+            <div class="card rounded p-3 bg-dark text-white">
+                <div class="display-5">Add Stock</div>
+                <hr>
+                <form th:action="@{/admin/addStock}" method="post" modelAttribute="stock">
+                    <div class="form-group p-2">
+                        <input class="form-control bg-dark text-white" type="text" name="stock_name" placeholder="Stock Name" required>
+                    </div>
+                    <div class="form-group p-2">
+                        <input class="form-control bg-dark text-white" type="number" name="stock_price" placeholder="Stock Price" required>
+                    </div>
+                    <div class="form-group p-2">
+                        <input class="form-control bg-dark text-white" type="date" name="date" placeholder="Stock Name" required>
+                    </div>
+                    <div class="form-group p-2">
+                        <input class="btn btn-success" type="submit" value="Add Stock">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col card rounded bg-dark text-white">
+            <div class="display-5">Available Stocks</div>
+            <hr>
+            <div class="scrollable">
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Stock Name</td>
+                        <td>Stock Price</td>
+                        <td>Action</td>
+                    </tr>
+                    </thead>
+                    <tr class="m-2 p-2 bg-dark text-white"  th:each="stock: ${available_stocks}">
+                        <td class="col m-2 bg-dark text-white" th:text="${stock.date}" ></td>
+                        <td class="col m-2 bg-dark text-white" th:text="${stock.stock_name}"></td>
+                        <td class="col m-2 badge bg-success text-white" th:text="${stock.stock_price}"></td>
+                        <td class="col m-2 bg-dark text-white">
+                            <a th:href="@{'/admin/updateStock'(stockID=${stock.stock_id})}" class="m-2 btn btn-primary">Manage</a>
+                            <a th:href="@{'/admin/removeStock'(stockID=${stock.stock_id})}" class="m-2 btn btn-danger">Remove</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

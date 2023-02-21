@@ -1,1 +1,0 @@
-# ManageMyStocks
